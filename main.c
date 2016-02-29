@@ -62,9 +62,26 @@ int main(int argc, const char* argv[])
 		printf("%d ", iter->key.u32);
 	}
 	printf("\n");
+	
 	v.u32 = 8;
 	iter = skiplist_search(sl, v);
 	if(iter != NULL)
+		printf("find k = %d OK, v = %d\n", v.u32, iter->val.u32);
+	else
+		printf("find k = %d failed!\n", v.u32);
+
+	v.u32 = 5;
+	skiplist_insert(sl, v, v);
+
+	printf("values = ");
+	SKIPLIST_FOREACH(sl, iter){
+		printf("%d ", iter->key.u32);
+	}
+	printf("\n");
+
+	v.u32 = 5;
+	iter = skiplist_search(sl, v);
+	if (iter != NULL)
 		printf("find k = %d OK, v = %d\n", v.u32, iter->val.u32);
 	else
 		printf("find k = %d failed!\n", v.u32);
